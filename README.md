@@ -1,16 +1,18 @@
 # EXP-3-B-Automatic-street-light-systems-using-LDR-sensor
 
 ## Aim: 
+To control an LED based on ambient light intensity using an LDR and Arduino UNO.
 
 ## Hardware / Software Tools required:
 
-	PC/ Laptop with Internet connection
-	Tinker CAD tool (Online)
-	Arduino UNO 
-	Board/ESP-32
-	Photoresistor
+PC/ Laptop with Internet connection
+Tinker CAD tool (Online)
+Arduino UNO 
+Board/ESP-32
+Photoresistor
   
 ## Circuit Diagram:
+<img width="974" height="717" alt="image" src="https://github.com/user-attachments/assets/ff8dde1f-ec5c-4efe-96e8-58e80c112efc" />
 
 
 ## Theory :
@@ -21,12 +23,12 @@ The board is programmable using the Arduino IDE (Integrated Development Environm
 ## Procedure:
 
 ### Step 1: 
-	Set Up the Tinkercad Environment
+Set Up the Tinkercad Environment
 •	Log in to Tinkercad: Open Tinkercad in your web browser and log in to your account.
 •	Create a New Circuit: In the Tinkercad dashboard, click on "Circuits" and then select "Create New Circuit."
 ### Step 2: 
 
-	Add Components to the Circuit
+Add Components to the Circuit
 •	Arduino Uno: Drag an Arduino Uno board from the components panel onto the workspace.
 •	LDR Sensor: Search for the Photoresistor in the components panel and drag it into the workspace.
 •	Breadboard: Drag a small breadboard to the workspace to help with wiring connections.
@@ -34,7 +36,7 @@ The board is programmable using the Arduino IDE (Integrated Development Environm
 •	Wires: Use wires to connect the components.
 
 ### Step 3: 
-	Connect the LDR Sensor to the Arduino
+Connect the LDR Sensor to the Arduino
 •	LDR Sensor Pins: The LDR has two terminals (pins).
 •	One LDR Pin to 5V: Connect one terminal of the LDR to the Arduino 5V pin.
 •	Other LDR Pin to Analog Input and Resistor:
@@ -66,10 +68,36 @@ o	The middle point (between LDR and resistor) connects to the Arduino analog inp
 
 ## Code:
 
+```cpp
+const int ldrPin = A5;
+const int ledPin = 13;
+int ldrValue = 0;
 
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  ldrValue = analogRead(ldrPin);
+  if (ldrValue > 750) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+  Serial.println(ldrValue);
+  delay(1000);
+}
+
+```
 
 ## Output:
- 
+
+
+https://github.com/user-attachments/assets/f0c3ec9f-d121-4513-9c3f-84d280285c0f
+
+
 
 
 ## Result:
+Thus, the LED was successfully controlled based on light intensity using the LDR.
